@@ -17,6 +17,7 @@
     "truffle": "^5.11.5"
   },
   "devDependencies": {
+    "copyfiles": "^2.4.1",
     "solc": "^0.8.20"
   }
 }
