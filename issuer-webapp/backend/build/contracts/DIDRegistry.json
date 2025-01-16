@@ -31,7 +31,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"getDID\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"did\",\"type\":\"string\"}],\"name\":\"registerDID\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/DIDRegistry.sol\":\"DIDRegistry\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/DIDRegistry.sol\":{\"keccak256\":\"0x6d970efe398f4c45b800d855299d7003b36b972d314a5653184140d9e411bcb0\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://fbde7078d094241dc13b3c3bfde88c40dfde1492641a0acb22188344600fd1ac\",\"dweb:/ipfs/QmYpTqZUc2eKJ3Nbw6j32w5Moj9QCkiUrE1txxuwLC1BP3\"]}},\"version\":1}",
@@ -5971,10 +5972,17 @@
       "links": {},
       "address": "0x5c75661A0d29a3Aca7b35eF293afaE49f2820B98",
       "transactionHash": "0x848f442e3b68e7754b91d9367e1da93c171e25302ffed720326489c3d8a33c45"
+    },
+    "1737018715983": {
+      "events": {},
+      "links": {},
+      "address": "0x509588fff0CC9D493524C09b13ebc57d8add5E71",
+      "transactionHash": "0xd111e659c5ab7307b1c214471f37470fab55d3cf9dc4351713e97be921df1747"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-01-16T09:15:31.694Z",
+  "updatedAt": "2025-01-16T09:24:54.075Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},
