@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>Issuer for Governtment/Issuing Organisations</code> and save to reload.
+          Edit <code>Verifier for those requesting the info</code> and save to reload.
         </p>
         <a
           className="App-link"
