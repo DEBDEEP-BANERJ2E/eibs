@@ -1,23 +1,46 @@
 import React, { useState } from "react";
-import { issueCredential } from "../services/credentialService";
 
-const CredentialForm = () => {
+const CredentialForm = ({ onIssueCredential }) => {
     const [holderName, setHolderName] = useState("");
     const [credentialType, setCredentialType] = useState("");
     const [metadata, setMetadata] = useState("");
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        await issueCredential(holderName, credentialType, metadata);
-        alert("Credential Issued!");
+        // Call the onIssueCredential function passed as a prop
+        onIssueCredential(holderName, credentialType, metadata);
     };
 
     return (
         <form onSubmit={handleSubmit}>
-            <input placeholder="Holder Name" onChange={(e) => setHolderName(e.target.value)} />
-            <input placeholder="Credential Type" onChange={(e) => setCredentialType(e.target.value)} />
-            <textarea placeholder="Metadata" onChange={(e) => setMetadata(e.target.value)} />
-            <button type="submit">Issue</button>
+            <div>
+                <label>Holder Name</label>
+                <input 
+                    type="text" 
+                    value={holderName} 
+                    onChange={(e) => setHolderName(e.target.value)} 
+                    required 
+                />
+            </div>
+            <div>
+                <label>Credential Type</label>
+                <input 
+                    type="text" 
+                    value={credentialType} 
+                    onChange={(e) => setCredentialType(e.target.value)} 
+                    required 
+                />
+            </div>
+            <div>
+                <label>Metadata</label>
+                <input 
+                    type="text" 
+                    value={metadata} 
+                    onChange={(e) => setMetadata(e.target.value)} 
+                    required 
+                />
+            </div>
+            <button type="submit">Issue Credential</button>
         </form>
     );
 };
