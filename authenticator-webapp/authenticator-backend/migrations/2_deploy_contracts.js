@@ -1,5 +1,5 @@
-const DIDRegistry = artifacts.require('Credential');
+const Credential = artifacts.require("Credential");
 
 module.exports = function (deployer) {
-  deployer.deploy(DIDRegistry);
+  deployer.deploy(Credential);
 };
