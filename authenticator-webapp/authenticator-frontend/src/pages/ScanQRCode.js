@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import QRScanner from "../components/QRScanner";
 import Cards from "../components/Cards";
+import FlickeringGrid from "../components/ui/flickering-grid";
+
 
 const ScanQRCode = () => {
     const [scanResult, setScanResult] = useState(null);
@@ -36,25 +38,49 @@ const ScanQRCode = () => {
     };
 
     return (
-        <div style={{ textAlign: "center", marginTop: "20px" }}>
-            <h1>Scan QR Code</h1>
-            <QRScanner onScan={handleCredentialScanned} onError={handleScanError} />
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-black to-gray-700 text-white">
 
-            {error && (
-                <div style={{ color: "red", marginTop: "20px" }}>
-                    <h3>Error:</h3>
-                    <p>{error}</p>
-                </div>
-            )}
+            
+            <div style={{ textAlign: "center", marginTop: "20px" }} className="full">
+            <div className="">
+    <div style={{ textAlign: "center", marginTop: "20px" }} className="full">
+        <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-700 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-700">
+            Scan <b><span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-r from-violet-500 via-pink-500 to-violet-500 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent animate-gradient-move">
+    QR
+</span>
 
-            {scanResult && (
-                <div style={{ marginTop: "20px" }}>
-                    <h3>Decoded QR Message:</h3>
-                    <p>{scanResult}</p>
-                </div>
-            )}
 
-            <Cards cards={walletCards} setCards={setWalletCards} />
+</b> Code
+        </span>
+    </div>
+</div>
+
+                
+<QRScanner 
+    onScan={handleCredentialScanned} 
+    onError={handleScanError} 
+    style={{ width: "150000px", height: "150000px" }} // Adjust dimensions here
+/>
+
+                {error && (
+                    <div style={{ color: "red", marginTop: "20px" }}>
+                        <h3>Error:</h3>
+                        <p>{error}</p>
+                    </div>
+                )}
+
+                {scanResult && (
+                    <div style={{ marginTop: "10px" }}>
+                    <div className="bg-gray-700 p-4 rounded-lg shadow-lg ">
+                    <h2 class="text-green-500 text-xl">Decoded QR Message</h2>
+                        <p className="text-lg text-white">{scanResult}</p>
+                    </div>
+                    </div>
+                
+                )}
+                
+                <Cards cards={walletCards} setCards={setWalletCards} />
+            </div>
         </div>
     );
 };

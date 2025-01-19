@@ -19,9 +19,11 @@ const Cards = ({ cards, setCards }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mt-8 text-center"
+            className="min-h-screen flex flex-col items-center justify-center text-center"
         >
-            <h2 className="text-3xl font-bold mb-6 text-gray-800">Digital Wallet Cards</h2>
+            <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                Digital Wallet Cards
+            </h2>
             {cards.length === 0 ? (
                 <p className="text-gray-600">No cards in your wallet yet.</p>
             ) : (

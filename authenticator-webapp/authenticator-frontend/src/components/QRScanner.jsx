@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 
 const QRScanner = ({ onScan, onError }) => {
     const [previewStyle] = useState({
-        height: 240,
-        width: 320,
+        height: 480, // Increased height
+        width: 640,  // Increased width
         margin: "auto",
     });
 
@@ -26,11 +26,11 @@ const QRScanner = ({ onScan, onError }) => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="glass p-6 text-center mt-8"
+            className="glass p-6 text-center"
         >
             <QrScanner
                 delay={300}
-                style={previewStyle}
+                style={previewStyle} // Use the updated previewStyle
                 onError={(err) => {
                     console.error("QR Scanner Error:", err);
                     onError && onError(err.message || "Error scanning QR code");
