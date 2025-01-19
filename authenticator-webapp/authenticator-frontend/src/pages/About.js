@@ -1,7 +1,6 @@
 "use client";
 
 import { HolographicCard } from "../components/ui/holographic-card";
-import Navbar from "../components/Navbar"; // Corrected import for default export
 import {
   Shield,
   Key,
@@ -15,16 +14,12 @@ import {
 import { useState } from "react";
 
 export default function AboutPage() {
-  const [color, setColor] = useState("#ffffff");
-
   return (
-    <div className="container min-h-screen px-4 py-24 bg-black relative">
-      {/* <Navbar /> */}
-      <div className="max-w-4xl mx-auto relative z-10">
-      <h1 className="text-6xl font-extrabold text-center text-fuchsia-400 mb-16">
-  About CredKey
-</h1>
-
+    <div className="min-h-screen flex flex-col items-center justify-center bg-black px-4 py-8 text-white">
+      <div className="w-full max-w-4xl">
+        <h1 className="text-6xl font-extrabold text-center text-fuchsia-400 mb-16">
+          About CredKey
+        </h1>
 
         <HolographicCard className="mb-8 p-8">
           <h2 className="text-2xl font-semibold text-center text-fuchsia-400 mb-4">
@@ -87,7 +82,7 @@ export default function AboutPage() {
           <h2 className="text-center text-2xl font-semibold text-fuchsia-400 mb-4">
             Example Use Case
           </h2>
-          <p className="text-center text-violet-300 mb-6">
+          <p className="text-center text-violet-300">
             A job applicant provides a blockchain-verified degree certificate
             to an employer. The employer verifies the certificate's authenticity
             on-chain without contacting the university. This process is faster,
