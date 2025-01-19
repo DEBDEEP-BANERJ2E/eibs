@@ -58,34 +58,22 @@ const Wallet = () => {
         setSearchResult(null);
     };
 
-    const handleAccept = async () => {
+    const handleAccept = () => {
         if (searchResult) {
-            try {
-                const response = await fetch("http://localhost:5177", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        card: searchResult
-                    }),
-                });
+            // Store the accepted card in localStorage
+            let storedCards = JSON.parse(localStorage.getItem("acceptedCards")) || [];
+            storedCards.push(searchResult);
+            localStorage.setItem("acceptedCards", JSON.stringify(storedCards));
     
-                if (response.ok) {
-                    console.log("Card details successfully sent to server");
-                    setIsMessageSent(true);  // Indicate that the message was sent successfully
-                    setTimeout(() => {
-                        setSearchResult(null);
-                        setDecodedMessage("");
-                        setIsScanning(false);
-                        setIsMessageSent(false);
-                    }, 2000); // Adjust the delay as needed
-                } else {
-                    console.error("Failed to send details to the server");
-                }
-            } catch (error) {
-                console.error("Error while sending details:", error);
-            }
+            console.log("Card details saved to localStorage");
+    
+            setIsMessageSent(true);  // Indicate that the message was sent successfully
+            setTimeout(() => {
+                setSearchResult(null);
+                setDecodedMessage("");
+                setIsScanning(false);
+                setIsMessageSent(false);
+            }, 2000); // Adjust the delay as needed
         }
     };
     

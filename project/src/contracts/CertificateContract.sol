@@ -16,6 +16,7 @@ contract CertificateContract {
     event CertificateIssued(string hash, address issuer, address recipient, uint256 timestamp);
     event CertificateRevoked(string hash, uint256 timestamp);
     event CertificateVerified(string hash, bool isValid, uint256 timestamp);
+    event FundsReceived(address sender, uint256 amount);
 
     constructor() {
         owner = msg.sender;
@@ -26,10 +27,14 @@ contract CertificateContract {
         _;
     }
 
-    function issueCertificate(string memory hash, address recipient) public {
+    // Payable function to receive Ether when issuing a certificate
+    function issueCertificate(string memory hash, address recipient) public payable {
         require(bytes(hash).length > 0, "Hash cannot be empty");
         require(recipient != address(0), "Invalid recipient address");
         require(certificates[hash].timestamp == 0, "Certificate already exists");
+
+        // Emit event that funds were received
+        emit FundsReceived(msg.sender, msg.value);
 
         certificates[hash] = Certificate({
             hash: hash,
@@ -40,6 +45,11 @@ contract CertificateContract {
         });
 
         emit CertificateIssued(hash, msg.sender, recipient, block.timestamp);
+    }
+
+    // Payable function to allow the contract to accept funds directly
+    receive() external payable {
+        emit FundsReceived(msg.sender, msg.value);
     }
 
     function revokeCertificate(string memory hash) public {
@@ -75,5 +85,11 @@ contract CertificateContract {
             cert.timestamp,
             cert.isRevoked
         );
+    }
+
+    // Function to allow the owner to withdraw Ether from the contract
+    function withdraw(uint256 amount) public onlyOwner {
+        require(address(this).balance >= amount, "Insufficient funds");
+        payable(owner).transfer(amount);
     }
 }
